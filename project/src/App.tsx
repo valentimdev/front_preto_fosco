@@ -12,7 +12,6 @@ function App() {
       <BackgroundGrid />
       <GrainOverlay />
 
-      <Header />
 
       <main>
         <Hero />

@@ -1,26 +1,52 @@
 .background-grid {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   z-index: -1;
-  width: 100%;
-  height: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // aumentamos de 180px para 300px
+  gap: 6px; // gap menor pra evitar espaços vazios
+  padding: 0; // removido para preencher até as bordas
   pointer-events: none;
+  overflow: hidden;
 
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(5, 1fr);
+  .bg-image-container {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.08;
+    filter: grayscale(100%) brightness(0.8) blur(2px);
+    transition: transform 1s ease;
   }
 
   &::after {
     content: '';
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.85); // overlay for contrast
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.95));
+    z-index: 1;
+  }
+
+
+
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.75), #000);
     z-index: 1;
     pointer-events: none;
   }
+
+
 
   .bg-image-container {
     position: relative;

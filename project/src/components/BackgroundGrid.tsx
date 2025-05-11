@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/BackgroundGrid.scss';
 
-const catImages = [
+const bgImages = [
   '/bg/1.jpg',
   '/bg/2.jpg',
   '/bg/3.jpg',
@@ -14,16 +14,11 @@ const catImages = [
   '/bg/10.jpg',
 ];
 
-// Shuffle to avoid repeating pattern
-const shuffle = (array: string[]) => [...array].sort(() => 0.5 - Math.random());
-
 const BackgroundGrid: React.FC = () => {
-  const extendedImages = shuffle([...catImages, ...catImages]);
-
   return (
     <div className="background-grid">
-      {extendedImages.map((src, index) => (
-        <div className="bg-image-container" key={`cat-${index}`}>
+      {bgImages.map((src, index) => (
+        <div className="bg-image-container" key={`bg-${index}`}>
           <img
             src={src}
             alt=""
